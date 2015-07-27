@@ -1,0 +1,24 @@
+group 'groupid'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'jetty'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile  group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.3.1.v20150714'
+    compile  group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.12'
+}
+
+
+mainClassName = 'org.eclipse.jetty.embedded.HelloWorld'
+
