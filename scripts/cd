@@ -2,3 +2,9 @@
 set -x
 set -e
 ./gradlew clean test distTar
+scp build/distributions/hell-1.0.tar plex@45.55.153.133:~
+ansible all -i '45.55.153.133,' -u plex -m command -a "rm -rf hell-1.0/"
+ansible all -i '45.55.153.133,' -u plex -m command -a "tar xf hell-1.0.tar"
+ansible all -i '45.55.153.133,' -u plex -m command -a "sv restart hell"
+# http 45.55.153.133:8080 | diff - /Users/Shared/Jenkins/test.tmp
+
